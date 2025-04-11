@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CGN-Raves</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url("pics/dj.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #overlay {
+      background: rgba(0, 0, 0, 0.6);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #city-select, #chat {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+
+    #chat {
+      display: none;
+    }
+
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      width: 100%;
+      max-width: 600px;
+      border: 1px solid white;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    #input {
+      display: flex;
+      width: 100%;
+      max-width: 600px;
+      gap: 10px;
+    }
+
+    #input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    #input button {
+      padding: 10px;
+      border: none;
+      background-color: #8B0000;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button.city {
+      background-color: #8B0000;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      margin-top: 30px;
+    }
+
+    #typewriter {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      min-height: 2em;
+      margin-top: 80px;
+      text-align: center;
+      margin-top: 100px; /* <- Das fügt Abstand nach oben ein */
+    }
+
+    #username-input {
+      padding: 10px;
+      border: none;
+      font-size: 1rem;
+      max-width: 300px;
+      width: 80%;
+      text-align: center;
+      margin-top: 240px;
+    }
+
+    @media (max-width: 600px) {
+      #username-input, #input input, #input button {
+        font-size: 1rem;
+      }
+
+      button.city {
+        width: 90%;
+        font-size: 1.1rem;
+      }
+
+      #messages {
+        font-size: 0.95rem;
+      }
+      #footer {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.agb-button {
+  background-color: #8B0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.agb-button:hover {
+  background-color: #a40000;
+}
+
+    }
+  </style>
+</head>
+<body>
+  <div id="overlay">
+    <div id="city-select">
+      <h2 id="typewriter"></h2>
+      <input id="username-input" placeholder="Dein Name für den Chat..." />
+      <button class="city" data-city="köln">➡️ Tritt dem Live Chat bei</button>
+    </div>
+
+    <div id="chat">
+      <h2>CGN-Raves Live Chat</h2>
+      <div id="messages"></div>
+      <div id="input">
+        <input id="message" placeholder="Sag was zum Rave..." autocomplete="off" />
+        <button id="send">Senden</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const button = document.querySelector(".city");
+    const chat = document.getElementById("chat");
+    const select = document.getElementById("city-select");
+    const messages = document.getElementById("messages");
+    const input = document.getElementById("message");
+    const send = document.getElementById("send");
+    const usernameInput = document.getElementById("username-input");
+
+    let username = "";
+
+    function isValidUsername(name) {
+      return /^[a-zA-Z0-9äöüÄÖÜß ]{2,20}$/.test(name);
+    }
+
+    button.addEventListener("click", () => {
+      const enteredName = usernameInput.value.trim();
+      if (!isValidUsername(enteredName)) {
+        alert("Bitte gib einen gültigen Namen ein (2–20 Zeichen, keine Sonderzeichen außer Leerzeichen).");
+        return;
+      }
+      username = enteredName;
+      socket.emit("joinCity", "köln");
+      select.style.display = "none";
+      chat.style.display = "flex";
+    });
+
+    send.addEventListener("click", () => {
+      const msg = input.value.trim();
+      if (msg && username) {
+        socket.emit("chat message", `${username}: ${msg}`);
+        input.value = "";
+      }
+    });
+
+    socket.on("chat message", (msg) => {
+      const item = document.createElement("div");
+      item.textContent = msg;
+      messages.appendChild(item);
+      messages.scrollTop = messages.scrollHeight;
+    });
+
+    // Typewriter-Effekt
+    const typewriterElement = document.getElementById("typewriter");
+    const typewriterText = "CGN-Raves Live Chat 🔊";
+    let index = 0;
+    let direction = "forward";
+
+    function typeEffect() {
+      if (direction === "forward") {
+        typewriterElement.textContent = typewriterText.slice(0, index++);
+        if (index > typewriterText.length) {
+          direction = "backward";
+          setTimeout(typeEffect, 2000);
+          return;
+        }
+      } else {
+        typewriterElement.textContent = typewriterText.slice(0, --index);
+        if (index === 0) {
+          direction = "forward";
+        }
+      }
+      setTimeout(typeEffect, 100);
+    }
+
+    typeEffect();
+  </script>
+
+<footer id="footer">
+    <div class="footer-text">© 2025 designed by Elpate</div>
+    <button class="agb-button" onclick="window.location.href='/agb.html'">AGB</button>
+  </footer>
+
+</body>
+</html>
+
