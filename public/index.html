@@ -86,9 +86,8 @@
       font-size: 1.5rem;
       margin-bottom: 20px;
       min-height: 2em;
-      margin-top: 80px;
+      margin-top: 100px;
       text-align: center;
-      margin-top: 100px; /* <- Das fügt Abstand nach oben ein */
     }
 
     #username-input {
@@ -99,6 +98,32 @@
       width: 80%;
       text-align: center;
       margin-top: 240px;
+    }
+
+    #footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .agb-button {
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .agb-button:hover {
+      background-color: #a40000;
     }
 
     @media (max-width: 600px) {
@@ -114,32 +139,6 @@
       #messages {
         font-size: 0.95rem;
       }
-      #footer {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-  font-size: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.agb-button {
-  background-color: #8B0000;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.agb-button:hover {
-  background-color: #a40000;
-}
-
     }
   </style>
 </head>
@@ -231,11 +230,9 @@
     typeEffect();
   </script>
 
-<footer id="footer">
+  <footer id="footer">
     <div class="footer-text">© 2025 designed by Elpate</div>
     <button class="agb-button" onclick="window.location.href='/agb.html'">AGB</button>
   </footer>
-
 </body>
 </html>
-
