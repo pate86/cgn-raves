@@ -10,7 +10,7 @@ const io = new Server(server);
 // statische Dateien
 app.use(express.static(path.join(__dirname, "public")));
 
-const cities = ["CGN-Raves Live Chat"];
+const cities = ["köln"];
 
 const chatRooms = {};
 
