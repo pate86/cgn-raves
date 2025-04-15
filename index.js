@@ -29,6 +29,7 @@ io.on("connection", (socket) => {
       io.to(socket.city).emit("chat message", msg);
     }
   });
+  
 
   socket.on("disconnect", () => {
     if (socket.city) {
