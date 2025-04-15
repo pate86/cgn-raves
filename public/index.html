@@ -27,20 +27,30 @@
 
     #city-select, #chat {
       padding: 20px;
-      padding-top: 30px; /* Inhalt rückt nach oben */
+      padding-top: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     #chat {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-      width: 100%;
-      padding-top: 20px;
-    }
+  display: none;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+    #chat-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 
     #messages {
       width: 100%;
@@ -86,6 +96,25 @@
       font-size: 1.2rem;
       border-radius: 5px;
       margin-top: 30px;
+    }
+
+    #notice-banner {
+      margin-top: 20px;
+      background-color: #ff0080;
+      padding: 15px 25px;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      text-align: center;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+      max-width: 600px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px #ff0080; }
+      50% { transform: scale(1.05); box-shadow: 0 0 20px #ff69b4; }
+      100% { transform: scale(1); box-shadow: 0 0 10px #ff0080; }
     }
 
     #typewriter {
@@ -187,7 +216,7 @@
       <h2 id="typewriter"></h2>
 
       <div id="intro-text">
-        🔥 <strong>Willkommen im Erotikchat Köln</strong> 🔥<br><br>
+        🔥 <strong>Willkommen im CGN-Erotica live Chat Köln</strong> 🔥<br><br>
         Lust auf heiße Gespräche, erotische Fantasien oder einfach nur neugieriges Kennenlernen?<br>
         Hier bist du genau richtig.<br><br>
         💋 Kostenlos.<br>
@@ -206,6 +235,11 @@
       </div>
 
       <button class="city" data-city="köln">➡️ Tritt dem live Chat bei</button>
+
+      <!-- PULSIERENDER BANNER -->
+      <div id="notice-banner">
+        ⚠️ Hinweis: Der Chat ist im Aufbau – es kann zu kurzen Ausfällen kommen. Danke für deine Geduld! Kontakt: cgn.erotica@gmail.com ❤️
+      </div>
     </div>
 
     <div id="chat">
