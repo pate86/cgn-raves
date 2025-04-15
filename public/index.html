@@ -117,14 +117,7 @@
       100% { transform: scale(1); box-shadow: 0 0 10px #ff0080; }
     }
 
-    #typewriter {
-      font-size: 2rem;
-      margin-top: 40px;
-      margin-bottom: 30px;
-      text-align: center;
-      font-weight: bold;
-      color: #ff4e9b;
-    }
+   
 
     #intro-text {
       max-width: 700px;
@@ -241,16 +234,51 @@
         font-size: 1rem;
       }
 
-      #typewriter {
-        font-size: 1.5rem;
-      }
+     
+      #after-chat-link {
+  display: block;
+  margin: 30px auto 0;
+  padding: 15px 25px;
+  background-color: #ff3399;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 12px;
+  max-width: 600px;
+  animation: softPulse 4s infinite ease-in-out;
+  box-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+}
+
+#after-chat-link:hover {
+  background-color: #ff66b2;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.9);
+  transform: scale(1.03);
+}
+
+@keyframes softPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+  }
+}
+
     }
   </style>
 </head>
 <body>
   <div id="overlay">
     <div id="city-select">
-      <h2 id="typewriter"></h2>
+        <h1 id="typewriter"> <strong>CGN-Erotica <br>live Chat 🔊🔥 <br></strong> </h1>
 
       <div id="intro-text">
         🔥 <strong>Willkommen im CGN-Erotica live Chat Köln</strong> 🔥<br><br>
@@ -291,6 +319,13 @@
         <button id="send">Senden</button>
       </div>
     </div>
+    <!-- SEXY PULSIERENDER LINK UNTER DEM CHAT -->
+<a href="https://partners.adklick.net/tracking.php?id=2312&action=link&user=104107&site=0&subid=0"
+target="_blank"
+id="after-chat-link">
+😍 Du suchst ein spontanes geiles Date? Dann hier entlang ➡️
+</a>
+
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
@@ -345,30 +380,8 @@
       messages.scrollTop = messages.scrollHeight;
     });
 
-    // Typewriter-Effekt
-    const typewriterElement = document.getElementById("typewriter");
-    const typewriterText = "CGN-Erotica live Chat 🔊";
-    let index = 0;
-    let direction = "forward";
-
-    function typeEffect() {
-      if (direction === "forward") {
-        typewriterElement.textContent = typewriterText.slice(0, index++);
-        if (index > typewriterText.length) {
-          direction = "backward";
-          setTimeout(typeEffect, 2000);
-          return;
-        }
-      } else {
-        typewriterElement.textContent = typewriterText.slice(0, --index);
-        if (index === 0) {
-          direction = "forward";
-        }
-      }
-      setTimeout(typeEffect, 100);
-    }
-
-    typeEffect();
+   
+    
 
     // ENTER-Taste zum Senden
     input.addEventListener("keydown", (e) => {
