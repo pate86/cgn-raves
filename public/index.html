@@ -25,32 +25,36 @@
       flex-direction: column;
     }
 
-    #city-select, #chat {
+    #city-select {
       padding: 20px;
       padding-top: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
 
     #chat {
-  display: none;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
-}
+      display: none;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
     #chat-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
     #messages {
       width: 100%;
@@ -98,27 +102,6 @@
       margin-top: 30px;
     }
 
-    #notice-banner {
-      margin-top: 20px;
-      background-color: #ff0080;
-      padding: 15px 25px;
-      border-radius: 10px;
-      color: white;
-      font-size: 1rem;
-      text-align: center;
-      font-weight: bold;
-      animation: pulse 2s infinite;
-      max-width: 600px;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 10px #ff0080; }
-      50% { transform: scale(1.05); box-shadow: 0 0 20px #ff69b4; }
-      100% { transform: scale(1); box-shadow: 0 0 10px #ff0080; }
-    }
-
-   
-
     #intro-text {
       max-width: 700px;
       text-align: center;
@@ -126,6 +109,9 @@
       line-height: 1.7;
       color: #ffd6f3;
       margin-bottom: 30px;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 10px;
     }
 
     #username-input {
@@ -178,118 +164,26 @@
     .agb-button:hover {
       background-color: #370303;
     }
-
-    @media (max-width: 600px) {
-      #username-input, #input input, #input button {
-        font-size: 1rem;
-      }
-
-      button.city {
-        width: 90%;
-        font-size: 1.1rem;
-      }
-
-      #sexy-link {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 18px 30px;
-  background: #5b0505;
-  color: white;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 15px;
-  animation: pulse-glow 1.8s infinite;
-  box-shadow: 0 0 15px #ff69b4;
-  max-width: 600px;
-}
-
-@keyframes pulse-glow {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4;
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px #ff69b4, 0 0 35px #ff1493;
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4;
-  }
-}
-
-#sexy-link:hover {
-  background-color: #ff69b4;
-  box-shadow: 0 0 30px #ff1493, 0 0 40px #ff69b4;
-}
-
-
-      #messages {
-        font-size: 0.95rem;
-      }
-
-      #intro-text {
-        font-size: 1rem;
-      }
-
-     
-      #after-chat-link {
-  display: block;
-  margin: 30px auto 0;
-  padding: 15px 25px;
-  background-color: #ff3399;
-  color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 12px;
-  max-width: 600px;
-  animation: softPulse 4s infinite ease-in-out;
-  box-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
-}
-
-#after-chat-link:hover {
-  background-color: #ff66b2;
-  box-shadow: 0 0 20px rgba(255, 105, 180, 0.9);
-  transform: scale(1.03);
-}
-
-@keyframes softPulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
-  }
-  50% {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
-  }
-}
-
-    }
   </style>
 </head>
 <body>
   <div id="overlay">
     <div id="city-select">
-        <h1 id="typewriter"> <strong>CGN-Erotica <br>live Chat 🔊🔥 <br></strong> </h1>
-
+      <h1 id="typewriter"><strong>👨‍💻 Willkommen im Techie-Treff – wo Bits auf Banter treffen! 🤖💬 </strong></h1>
       <div id="intro-text">
-        🔥 <strong>Willkommen im CGN-Erotica live Chat Köln</strong> 🔥<br><br>
-        Lust auf heiße Gespräche, erotische Fantasien oder einfach nur neugieriges Kennenlernen?<br>
-        Hier bist du genau richtig.<br><br>
-        💋 Kostenlos.<br>
-        💋 Ohne Anmeldung.<br>
-        💋 Direkt reinschreiben – ganz unkompliziert.<br><br>
-        Ob Flirts, Dates oder Austausch rund ums Thema Erotik & Porno – unser Chat ist offen für alle, die sich trauen.<br>
-        Diskret, anonym & 100% ungezwungen.<br><br>
-        Dein Vergnügen beginnt hier. 💦 Lostippen und Spaß haben!
+        <p>Dies ist kein offizieller Meetingraum.<br>
+        Hier gibt’s keine Tickets, keine Deadlines, kein Bullshit – nur echten Austausch unter Kolleg:innen, die wissen, dass <code>/coffee</code> ein legitimer Befehl sein sollte. ☕</p>
+
+        <p>Ob du über die neueste DevOps-Katastrophe rantest, ein cooles Script teilen willst oder einfach nur jemanden brauchst, der deinen "sudo"-Witz versteht – du bist hier genau richtig.</p>
+
+        <p>🧠 Fachsimpeln? Ja bitte.<br>
+        🤣 Lachen? Pflicht.<br>
+        👾 Debugging-Therapie? Immer.<br>
+        🎉 Memes? Werden hochgeschätzt.</p>
+
+        <p>Nur für echte Tech-Freunde, Kolleg:innen und Nerds mit Herz.<br>
+        Mach’s dir bequem, schreib was Kluges oder Lustiges – oder beides.<br>
+        Und denk dran: Was im Techie-Treff passiert, bleibt im Techie-Treff. 😎</p>
       </div>
 
       <input id="username-input" placeholder="Dein Name für den Chat..." />
@@ -300,32 +194,16 @@
       </div>
 
       <button class="city" data-city="köln">➡️ Tritt dem live Chat bei</button>
-      <!-- SEXY CALL-TO-ACTION BUTTON -->
-<a href="https://partners.adklick.net/tracking.php?id=1632&action=link&user=104107&site=0&subid=0" target="_blank" id="sexy-link">
-    💖 Lust auf richtig geilen Chat? Jetzt klicken ➡️
-  </a>
-
-      <!-- PULSIERENDER BANNER -->
-      <div id="notice-banner">
-        ⚠️ Hinweis: Der Chat ist neu und im Aufbau – es kann zu kurzen Ausfällen kommen! Es folgen in Zukunft u.a. weitere Großstädte! Danke für deine Geduld! Kontakt: cgn.erotica@gmail.com ❤️
-      </div>
     </div>
 
     <div id="chat">
-      <h2>CGN-Erotica live Chat</h2>
+      <h2>Tech-Chat </h2>
       <div id="messages"></div>
       <div id="input">
         <input id="message" placeholder="Was suchst du..." autocomplete="off" />
         <button id="send">Senden</button>
       </div>
     </div>
-    <!-- SEXY PULSIERENDER LINK UNTER DEM CHAT -->
-<a href="https://partners.adklick.net/tracking.php?id=2312&action=link&user=104107&site=0&subid=0"
-target="_blank"
-id="after-chat-link">
-😍 Du suchst ein spontanes geiles Date? Dann hier entlang ➡️
-</a>
-
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
@@ -380,10 +258,6 @@ id="after-chat-link">
       messages.scrollTop = messages.scrollHeight;
     });
 
-   
-    
-
-    // ENTER-Taste zum Senden
     input.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         send.click();
@@ -392,7 +266,7 @@ id="after-chat-link">
   </script>
 
   <footer id="footer">
-    <div class="footer-text">© 2025 designed by Elpate</div>
+    <div class="footer-text">© 2025 - Designed by ELpate</div>
     <button class="agb-button" onclick="window.location.href='/agb.html'">AGB</button>
   </footer>
 </body>
